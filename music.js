@@ -42,7 +42,7 @@ const changeMusic = (curMusic) => {
 const playMusic = () => {
   musicContainer.classList.add("play");
   playBtn.innerHTML = `<i class="fa-solid fa-pause"></i>`;
-  audioE1.play();
+  audioEl.play();
 };
 
 const pouseMusic = () => {
@@ -62,17 +62,17 @@ const play = () => {
 };
 
 const next = () => {
-  if (currentsong > musics.length - 1) {
+  if (currentSong >= musics.length - 1) {
     currentSong = 0;
   } else {
     currentSong++;
   }
-  changeMusic(musics[currentsong]);
+  changeMusic(musics[currentSong]);
   playMusic();
 };
 
 const prev = () => {
-  if (currentSong == 0) {
+  if (currentSong === 0) {
     currentSong = musics.length - 1;
   } else {
     currentSong--;
@@ -105,6 +105,6 @@ playBtn.addEventListener("click", play);
 forwardBtn.addEventListener("click", next);
 backwardBtn.addEventListener("click", prev);
 volumeEl.addEventListener("input", changeVolume);
-audioEl.addEventListener("timeUptade", changeProgress);
+audioEl.addEventListener("timeupdate", changeProgress);
 progressContainer.addEventListener("click", timeUptade);
 audioEl.addEventListener("ended", next);
